@@ -51,7 +51,12 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    //Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -60,9 +65,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
-    implementation ("androidx.fragment:fragment:1.2.5")
+    implementation ("com.squareup.moshi:moshi-kotlin:1.15.0")
+    implementation ("androidx.fragment:fragment-ktx:1.6.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
