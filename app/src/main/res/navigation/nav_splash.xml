@@ -4,28 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_splash"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/splashFragment2">
     <fragment
-        android:id="@+id/splashFragment"
+        android:id="@+id/splashFragment2"
         android:name="com.example.rimoverse.fragments.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment_to_characterListFragment"
-            app:destination="@id/characterListFragment" />
+            android:id="@+id/action_splashFragment2_to_characterListFragment2"
+            app:destination="@id/characterListFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/characterListFragment"
+        android:id="@+id/characterListFragment2"
         android:name="com.example.rimoverse.fragments.CharacterListFragment"
         android:label="fragment_character_list"
-        tools:layout="@layout/fragment_character_list" >
-        <action
-            android:id="@+id/action_characterListFragment_to_characterDetailFragment"
-            app:destination="@id/characterDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/characterDetailFragment"
-        android:name="com.example.rimoverse.fragments.CharacterDetailFragment"
-        android:label="fragment_character_detail"
-        tools:layout="@layout/fragment_character_detail" />
+        tools:layout="@layout/fragment_character_list" />
 </navigation>
