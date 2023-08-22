@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rimoverse.Adapter
@@ -15,6 +16,7 @@ import com.example.rimoverse.R
 import com.example.rimoverse.models.Character
 import com.example.rimoverse.network.Service
 import com.example.rimoverse.network.ServiceGenerator
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,27 +36,47 @@ class CharacterListFragment() : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.characterListRecyclerView)
 
-        val serviceGenerator = ServiceGenerator.buildService(Service :: class.java)
+        val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
+
         val call = serviceGenerator.getCharacterById(1)
 
-        call.enqueue(object : Callback<Character> {
-            override fun onResponse(call: Call<Character>, response: Response<Character>) {
-                if (response.isSuccessful){
+                call.enqueue(object : Callback<Character> {
+                    override fun onResponse(call: Call<Character>, response: Response<Character>) {
+                        if (response.isSuccessful) {
+                            recyclerView.apply {
+                                layoutManager = LinearLayoutManager(activity)
 
-                    recyclerView.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = Adapter(response.body()!!)
+                                adapter = Adapter(response.body()!!)
+                            }
+
+                        }
                     }
 
-                }
-            }
-            override fun onFailure(call: Call<Character>, t: Throwable) {
-                t.printStackTrace()
-                Log.e("error",t.message.toString())
-            }
-        })
+                    override fun onFailure(call: Call<Character>, t: Throwable) {
+                        t.printStackTrace()
+                        Log.e("error", t.message.toString())
+
+
+                    }
+
+                })
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            delay(3000)
+            findNavController().navigate(R.id.action_characterListFragment2_to_characterDetailFragment)
+        }
+
+
+        }
+
     }
-    }
+
+
+
+
+
+
+
 
 
 

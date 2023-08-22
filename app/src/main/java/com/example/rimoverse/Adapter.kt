@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rimoverse.models.Character
 import com.squareup.picasso.Picasso
 
-class Adapter(val character: Character): RecyclerView.Adapter<CharacterViewHolder>(){
+class Adapter(private val character: Character): RecyclerView.Adapter<CharacterViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.character_list_item,parent,false)
         return CharacterViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return 20
+        return 1
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
