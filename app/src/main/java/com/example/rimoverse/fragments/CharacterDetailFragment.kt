@@ -35,7 +35,7 @@ class CharacterDetailFragment() : Fragment() {
         val status = view.findViewById<TextView>(R.id.characterDetailStatusTextView)
 
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
-        val call = serviceGenerator.getCharacterById(1)
+        val call = serviceGenerator.getCharacterById(16)
 
         call.enqueue(object : Callback<Character> {
 
