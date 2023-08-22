@@ -18,22 +18,6 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val serviceGenerator = ServiceGenerator.buildService(Service :: class.java)
-        val call = serviceGenerator.getCharacterById(1)
-
-        call.enqueue(object : Callback<Character>{
-            override fun onResponse(call: Call<Character>, response: Response<Character>) {
-                if (response.isSuccessful){
-                    println(response.body()?.name)
-                }
-            }
-
-            override fun onFailure(call: Call<Character>, t: Throwable) {
-              t.printStackTrace()
-                Log.e("error",t.message.toString())
-            }
-
-        })
     }
 
 
