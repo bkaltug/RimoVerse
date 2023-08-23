@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.LinearGradient
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.navArgs
 import com.example.rimoverse.R
 import com.example.rimoverse.models.Character
 import com.example.rimoverse.network.Service
@@ -21,6 +22,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CharacterDetailFragment() : Fragment() {
+
+    val args: CharacterDetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +43,7 @@ class CharacterDetailFragment() : Fragment() {
         val status = view.findViewById<TextView>(R.id.characterDetailStatusTextView)
 
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
-        val call = serviceGenerator.getCharacterById(16)
+        val call = serviceGenerator.getCharacterById(args.characterId)
 
         call.enqueue(object : Callback<Character> {
 
