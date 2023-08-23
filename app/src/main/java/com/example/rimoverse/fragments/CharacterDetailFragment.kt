@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LinearGradient
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.rimoverse.R
 import com.example.rimoverse.models.Character
 import com.example.rimoverse.network.Service
@@ -27,6 +30,8 @@ class CharacterDetailFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val layout = view.findViewById<ConstraintLayout>(R.id.characterDetailLayout)
         val image = view.findViewById<ImageView>(R.id.characterDetailImageView)
         val name  = view.findViewById<TextView>(R.id.characterDetailNameTextView)
         val location = view.findViewById<TextView>(R.id.characterDetailLocationTextView)
