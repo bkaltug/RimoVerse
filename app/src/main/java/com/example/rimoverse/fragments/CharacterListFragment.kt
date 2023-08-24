@@ -20,11 +20,15 @@ import retrofit2.Response
 
 
 class CharacterListFragment : Fragment() {
+     private var idList: MutableList<Int> = mutableListOf()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(com.example.rimoverse.R.layout.fragment_character_list, container, false)
+        for (num in 1..500){
+            idList.add(num)
+        }
+        return inflater.inflate(R.layout.fragment_character_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,14 +37,8 @@ class CharacterListFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.characterListRecyclerView)
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
 
-
-        val idList = mutableListOf<Int>()
-
-        for (num in 1..300){
-            idList.add(num)
-        }
-
         val characterListCall = serviceGenerator.getCharacterListById(idList)
+
 
         characterListCall.enqueue(object: Callback<MutableList<Character>>{
             override fun onResponse(
@@ -64,6 +62,10 @@ class CharacterListFragment : Fragment() {
             }
         })
         }
+
+    override fun onResume() {
+        super.onResume()
+    }
 
     }
 

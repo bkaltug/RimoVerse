@@ -1,6 +1,6 @@
 package com.example.rimoverse.models
 
-data class Character(
+data class Result(
     val created: String,
     val episode: List<String>,
     val gender: String,
@@ -14,4 +14,3 @@ data class Character(
     val type: String,
     val url: String
 )
-

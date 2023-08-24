@@ -14,7 +14,4 @@ interface Service {
     @GET("character/{character-ids}")
     fun getCharacterListById(@Path("character-ids") characterIdNumbers: MutableList<Int>): Call<MutableList<Character>>
 
-    @GET("character/character-ids")
-    fun getCharacterList(@Path("character-ids") characterIds : String): Call<MutableList<Character>>
-
 }

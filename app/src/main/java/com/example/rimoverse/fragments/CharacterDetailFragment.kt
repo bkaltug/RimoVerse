@@ -8,9 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.LinearGradient
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.navArgs
 import com.example.rimoverse.R
 import com.example.rimoverse.models.Character
@@ -21,9 +18,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CharacterDetailFragment() : Fragment() {
+class CharacterDetailFragment : Fragment() {
 
-    val args: CharacterDetailFragmentArgs by navArgs()
+    private val args: CharacterDetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,8 +30,6 @@ class CharacterDetailFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val layout = view.findViewById<ConstraintLayout>(R.id.characterDetailLayout)
         val image = view.findViewById<ImageView>(R.id.characterDetailImageView)
         val name  = view.findViewById<TextView>(R.id.characterDetailNameTextView)
         val location = view.findViewById<TextView>(R.id.characterDetailLocationTextView)
@@ -63,8 +58,8 @@ class CharacterDetailFragment() : Fragment() {
             override fun onFailure(call: Call<Character>, t: Throwable) {
                 t.printStackTrace()
                 Log.e("error", t.message.toString())
-            }
 
+            }
         })
     }
 }
