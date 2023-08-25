@@ -22,7 +22,7 @@
             tools:src="@tools:sample/avatars[2]"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/characterNameTextView"
+            android:id="@+id/tvCharacterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#44000000"

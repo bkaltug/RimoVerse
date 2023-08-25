@@ -31,11 +31,11 @@ class CharacterDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val image = view.findViewById<ImageView>(R.id.characterDetailImageView)
-        val name  = view.findViewById<TextView>(R.id.characterDetailNameTextView)
-        val location = view.findViewById<TextView>(R.id.characterDetailLocationTextView)
-        val origin = view.findViewById<TextView>(R.id.characterDetailOriginTextView)
-        val species = view.findViewById<TextView>(R.id.characterDetailSpeciesTextView)
-        val status = view.findViewById<TextView>(R.id.characterDetailStatusTextView)
+        val name  = view.findViewById<TextView>(R.id.tvCharacterDetailName)
+        val location = view.findViewById<TextView>(R.id.tvCharacterDetailLocation)
+        val origin = view.findViewById<TextView>(R.id.tvCharacterDetailOrigin)
+        val species = view.findViewById<TextView>(R.id.tvCharacterDetailSpecies)
+        val status = view.findViewById<TextView>(R.id.tvCharacterDetailStatus)
 
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
         val call = serviceGenerator.getCharacterById(args.characterId)
@@ -44,12 +44,12 @@ class CharacterDetailFragment : Fragment() {
 
             override fun onResponse(call: Call<Character>, response: Response<Character>) {
                 if (response.isSuccessful) {
-                    Picasso.get().load(response.body()!!.image).into(image)
-                    name.text = response.body()!!.name
-                    location.text = response.body()!!.location.name
-                    origin.text = response.body()!!.origin.name
-                    species.text = response.body()!!.species
-                    status.text = response.body()!!.status
+                    Picasso.get().load(response.body()?.image).into(image)
+                    name.text = response.body()?.name.orEmpty()
+                    location.text = response.body()?.location?.name.orEmpty()
+                    origin.text = response.body()?.origin?.name.orEmpty()
+                    species.text = response.body()?.species.orEmpty()
+                    status.text = response.body()?.status.orEmpty()
 
 
                 }

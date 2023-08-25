@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rimoverse.Adapter
 import com.example.rimoverse.R
-import com.example.rimoverse.models.Character
+import com.example.rimoverse.models.CharacterList
 import com.example.rimoverse.network.Service
 import com.example.rimoverse.network.ServiceGenerator
 import retrofit2.Call
@@ -20,14 +20,10 @@ import retrofit2.Response
 
 
 class CharacterListFragment : Fragment() {
-     private var idList: MutableList<Int> = mutableListOf()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        for (num in 1..500){
-            idList.add(num)
-        }
         return inflater.inflate(R.layout.fragment_character_list, container, false)
     }
 
@@ -37,36 +33,26 @@ class CharacterListFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.characterListRecyclerView)
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
 
-        val characterListCall = serviceGenerator.getCharacterListById(idList)
+        val characterListCall = serviceGenerator.getCharacterList()
 
+        characterListCall.enqueue(object: Callback<CharacterList>{
 
-        characterListCall.enqueue(object: Callback<MutableList<Character>>{
-            override fun onResponse(
-                call: Call<MutableList<Character>>,
-                response: Response<MutableList<Character>>
-            ) {
+            override fun onResponse(call: Call<CharacterList>, response: Response<CharacterList>) {
                 if (response.isSuccessful){
                     recyclerView.apply {
                         layoutManager = GridLayoutManager(activity,2)
-                        adapter = Adapter(response.body()!!)
+                        adapter = Adapter(response.body()?.results?: arrayListOf())
                     }
                 }
             }
 
-            override fun onFailure(call: Call<MutableList<Character>>, t: Throwable) {
-
-                    println("Response failed")
-                    t.printStackTrace()
-                    Log.e("error", t.message.toString())
-
+            override fun onFailure(call: Call<CharacterList>, t: Throwable) {
+                println("Response failed")
+                t.printStackTrace()
+                Log.e("error", t.message.toString())
             }
         })
         }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
     }
 
 

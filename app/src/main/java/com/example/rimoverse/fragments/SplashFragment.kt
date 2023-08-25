@@ -17,7 +17,7 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             delay(3000)
-            findNavController().navigate(R.id.action_splashFragment2_to_characterListFragment2)
+            findNavController().navigate(R.id.action_splashFragment_to_characterListFragment)
         }
     }
 }

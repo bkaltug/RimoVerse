@@ -20,7 +20,6 @@ class Adapter(private val characterList: MutableList<Character>): RecyclerView.A
     override fun getItemCount(): Int {
         return characterList.size
     }
-
     override fun onBindViewHolder(holder: CharacterListViewHolder, position: Int) {
         return holder.bindView(characterList[position])
     }
@@ -28,11 +27,11 @@ class Adapter(private val characterList: MutableList<Character>): RecyclerView.A
 
 class CharacterListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-    private val listItemText : TextView = itemView.findViewById(R.id.characterNameTextView)
+    private val listItemText : TextView = itemView.findViewById(R.id.tvCharacterName)
     private val listItemImage : ImageView = itemView.findViewById(R.id.characterImageView)
     fun bindView(character: Character){
         listItemImage.setOnClickListener{
-            val action = CharacterListFragmentDirections.actionCharacterListFragment2ToCharacterDetailFragment().setCharacterId(character.id)
+            val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment().setCharacterId(character.id)
             findNavController(it.findFragment()).navigate(action)
         }
         listItemText.text = character.name
