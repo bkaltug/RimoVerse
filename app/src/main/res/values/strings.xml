@@ -2,4 +2,15 @@
     <string name="app_name">RimoVerse</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rick_sanchez">Rick Sanchez</string>
+    <string name="name">Name</string>
+    <string name="content">content</string>
+    <string name="location">Location</string>
+    <string name="earth">Earth</string>
+    <string name="origin">Origin</string>
+    <string name="originString">Origin</string>
+    <string name="species">Species</string>
+    <string name="speciesString">Species</string>
+    <string name="status">Status</string>
+    <string name="statusString">Status</string>
 </resources>

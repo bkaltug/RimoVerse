@@ -15,14 +15,14 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/characterImageView"
+            android:id="@+id/listItemCharacterImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars[2]"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCharacterName"
+            android:id="@+id/tvListItemCharacterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#44000000"
