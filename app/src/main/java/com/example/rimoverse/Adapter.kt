@@ -2,15 +2,12 @@ package com.example.rimoverse
 
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+
 import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rimoverse.databinding.CharacterListItemBinding
-import com.example.rimoverse.databinding.FragmentCharacterListBinding
 import com.example.rimoverse.fragments.CharacterListFragmentDirections
 import com.example.rimoverse.models.Character
 import com.squareup.picasso.Picasso

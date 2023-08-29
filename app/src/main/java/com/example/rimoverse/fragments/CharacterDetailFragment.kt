@@ -1,23 +1,18 @@
 package com.example.rimoverse.fragments
 
-import android.content.ContentValues.TAG
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.fragment.navArgs
-import com.example.rimoverse.MainActivity
-import com.example.rimoverse.R
 import com.example.rimoverse.databinding.FragmentCharacterDetailBinding
 import com.example.rimoverse.models.Character
 import com.example.rimoverse.network.Service
 import com.example.rimoverse.network.ServiceGenerator
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.NonDisposableHandle.parent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,11 +25,8 @@ class CharacterDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
             binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
             return binding.root
-
-
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,9 +56,6 @@ class CharacterDetailFragment : Fragment() {
         })
     }
 }
-
-
-
 
 
 

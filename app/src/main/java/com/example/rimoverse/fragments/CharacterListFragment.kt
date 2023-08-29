@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.rimoverse.Adapter
-import com.example.rimoverse.R
-import com.example.rimoverse.databinding.FragmentCharacterDetailBinding
 import com.example.rimoverse.databinding.FragmentCharacterListBinding
 import com.example.rimoverse.models.CharacterList
 import com.example.rimoverse.network.Service
@@ -39,7 +36,7 @@ class CharacterListFragment : Fragment() {
 
         val recyclerView = binding.characterListRecyclerView
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
-        val characterListCall = serviceGenerator.getCharacterList()
+        val characterListCall = serviceGenerator.getPage(3)
 
         characterListCall.enqueue(object: Callback<CharacterList>{
             override fun onResponse(call: Call<CharacterList>, response: Response<CharacterList>) {
