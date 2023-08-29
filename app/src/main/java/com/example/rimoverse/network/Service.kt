@@ -14,9 +14,6 @@ interface Service {
     fun getCharacterById(@Path("character-id") characterIds: Int): Call<Character>
 
     @GET("character")
-    fun getCharacterList(): Call<CharacterList>
-
-    @GET("character")
     fun getPage(@Query("page") pageIndex : Int ) : Call<CharacterList>
 
 }

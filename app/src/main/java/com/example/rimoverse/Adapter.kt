@@ -3,7 +3,6 @@ package com.example.rimoverse
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
 import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -27,14 +26,13 @@ class Adapter(private val characterList: MutableList<Character>): RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: CharacterListViewHolder, position: Int) {
-        return holder.bindView(characterList[position])
+        return holder.bind(characterList[position])
     }
 
 
     inner class CharacterListViewHolder(itemView: CharacterListItemBinding) :
         RecyclerView.ViewHolder(itemView.root) {
-        fun bindView(character: Character) {
-
+        fun bind(character: Character) {
             binding.apply {
                 tvListItemCharacterName.text = character.name
                 listItemCharacterImageView.setOnClickListener {
