@@ -17,7 +17,7 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        activity?.actionBar?.hide()
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

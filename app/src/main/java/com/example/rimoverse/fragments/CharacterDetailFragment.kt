@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.example.rimoverse.databinding.FragmentCharacterDetailBinding
-import com.example.rimoverse.models.Character
+import com.example.rimoverse.models.CharacterModel
 import com.example.rimoverse.network.Service
 import com.example.rimoverse.network.ServiceGenerator
 import com.squareup.picasso.Picasso
@@ -34,8 +34,8 @@ class CharacterDetailFragment : Fragment() {
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
         val call = serviceGenerator.getCharacterById(args.characterId)
 
-        call.enqueue(object : Callback<Character> {
-            override fun onResponse(call: Call<Character>, response: Response<Character>) {
+        call.enqueue(object : Callback<CharacterModel> {
+            override fun onResponse(call: Call<CharacterModel>, response: Response<CharacterModel>) {
                 if (response.isSuccessful) {
                     binding.apply {
                         Picasso.get().load(response.body()?.image).into(characterDetailImageView)
@@ -45,10 +45,16 @@ class CharacterDetailFragment : Fragment() {
                         tvCharacterDetailSpecies.text = response.body()?.species.orEmpty()
                         tvCharacterDetailStatus.text = response.body()?.status.orEmpty()
                     }
+
+                //Another option to databinding
+                //binding.apply{
+                // Picasso.get().load(response.body()?.image).into(characterDetailImageView)
+                // }
+                // binding.mycharacter = CharacterModel(response.body()?.created.orEmpty(),response.body()?.episode.orEmpty(),response.body()?.gender.orEmpty(),response.body()?.id,response.body()?.image.orEmpty(),response.body()?.location,response.body()?.name.orEmpty(),response.body()?.origin,response.body()?.species.orEmpty(),response.body()?.species.orEmpty(),response.body()?.type.orEmpty(),response.body()?.url.orEmpty(),)
                 }
             }
 
-            override fun onFailure(call: Call<Character>, t: Throwable) {
+            override fun onFailure(call: Call<CharacterModel>, t: Throwable) {
                 t.printStackTrace()
                 Log.e("error", t.message.toString())
 

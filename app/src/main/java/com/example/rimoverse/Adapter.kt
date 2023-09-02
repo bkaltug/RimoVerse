@@ -8,9 +8,9 @@ import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rimoverse.databinding.CharacterListItemBinding
 import com.example.rimoverse.fragments.CharacterListFragmentDirections
-import com.example.rimoverse.models.Character
+import com.example.rimoverse.models.CharacterModel
 import com.squareup.picasso.Picasso
-class Adapter(private val characterList: MutableList<Character>): RecyclerView.Adapter<Adapter.CharacterListViewHolder>() {
+class Adapter(private val characterList: MutableList<CharacterModel>): RecyclerView.Adapter<Adapter.CharacterListViewHolder>() {
 
     private lateinit var binding : CharacterListItemBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder {
@@ -32,16 +32,16 @@ class Adapter(private val characterList: MutableList<Character>): RecyclerView.A
 
     inner class CharacterListViewHolder(itemView: CharacterListItemBinding) :
         RecyclerView.ViewHolder(itemView.root) {
-        fun bind(character: Character) {
+        fun bind(characterModel: CharacterModel) {
             binding.apply {
-                tvListItemCharacterName.text = character.name
+                tvListItemCharacterName.text = characterModel.name
                 listItemCharacterImageView.setOnClickListener {
                     val action =
                         CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment()
-                            .setCharacterId(character.id)
+                            .setCharacterId(characterModel.id!!)
                     findNavController(it.findFragment()).navigate(action)
                 }
-                Picasso.get().load(character.image).into(listItemCharacterImageView)
+                Picasso.get().load(characterModel.image).into(listItemCharacterImageView)
             }
 
 
