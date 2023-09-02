@@ -32,12 +32,12 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        var counter = 1
         val recyclerView = binding.characterListRecyclerView
         val swipeRefreshLayout = binding.swipeRefreshLayout
         val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
 
+        //TODO will receive better page service, temporary solution
+        var counter = 1
         fun getPage(){
             serviceGenerator.getPage(counter).enqueue(object: Callback<CharacterList>{
                 override fun onResponse(call: Call<CharacterList>, response: Response<CharacterList>) {
@@ -56,19 +56,13 @@ class CharacterListFragment : Fragment() {
                 }
             })
         }
-
         getPage()
-
-
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = false
             counter++
-
             getPage()
         }
         }
-
-
     }
 
 
