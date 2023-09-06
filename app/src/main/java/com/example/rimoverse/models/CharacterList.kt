@@ -2,5 +2,5 @@ package com.example.rimoverse.models
 
 data class CharacterList(
     val info: Info,
-    val results: MutableList<CharacterModel>
+    val results: List<CharacterModel>
 )

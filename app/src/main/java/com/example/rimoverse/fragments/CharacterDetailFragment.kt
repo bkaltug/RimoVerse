@@ -10,8 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.example.rimoverse.databinding.FragmentCharacterDetailBinding
 import com.example.rimoverse.models.CharacterModel
-import com.example.rimoverse.network.Service
-import com.example.rimoverse.network.ServiceGenerator
+import com.example.rimoverse.network.NetworkLayer
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +30,7 @@ class CharacterDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val serviceGenerator = ServiceGenerator.buildService(Service::class.java)
+        val serviceGenerator = NetworkLayer.service
         val call = serviceGenerator.getCharacterById(args.characterId)
 
         call.enqueue(object : Callback<CharacterModel> {

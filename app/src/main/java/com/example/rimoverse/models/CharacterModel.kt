@@ -1,6 +1,7 @@
 package com.example.rimoverse.models
 
-data class CharacterModel(
+
+data class CharacterModel (
     val created: String,
     val episode: List<String>,
     val gender: String,

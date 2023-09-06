@@ -10,7 +10,9 @@ import com.example.rimoverse.databinding.CharacterListItemBinding
 import com.example.rimoverse.fragments.CharacterListFragmentDirections
 import com.example.rimoverse.models.CharacterModel
 import com.squareup.picasso.Picasso
-class Adapter(private val characterList: MutableList<CharacterModel>): RecyclerView.Adapter<Adapter.CharacterListViewHolder>() {
+
+
+class Adapter(private val characterList: List<CharacterModel>): RecyclerView.Adapter<Adapter.CharacterListViewHolder>() {
 
     private lateinit var binding : CharacterListItemBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder {
